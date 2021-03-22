@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="50dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="false"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:text="@string/title"
+        android:textSize="30sp" />
+
+    <View
+        android:id="@+id/guideView"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/titleText"
+        android:background="#80242424" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/guideView">
+
+        <RelativeLayout
+            android:id="@+id/relativelayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <ImageButton
+                android:id="@+id/flashbt"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/toolname"
+                app:srcCompat="@android:color/holo_green_dark"
+                android:layout_toStartOf="@id/guideView2"
+                />
+
+            <ImageButton
+                android:id="@+id/toolbt2"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_below="@id/flashbt"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/toolname"
+                app:srcCompat="@android:color/holo_green_dark"
+                android:layout_toStartOf="@id/guideView2" />
+
+            <ImageButton
+                android:id="@+id/toolbt3"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_below="@id/toolbt2"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/toolname"
+                app:srcCompat="@android:color/holo_green_dark"
+                android:layout_toStartOf="@id/guideView2" />
+
+            <ImageButton
+                android:id="@+id/toolbt4"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_below="@id/toolbt3"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/toolname"
+                app:srcCompat="@android:color/holo_green_dark"
+                android:layout_toStartOf="@id/guideView2" />
+
+            <View
+                android:id="@+id/guideView2"
+                android:layout_width="2dp"
+                android:layout_height="740dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="#80242424" />
+
+            <ImageButton
+                android:id="@+id/toolbt5"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/toolname"
+                app:srcCompat="@android:color/holo_green_dark"
+                android:layout_toEndOf="@id/guideView2" />
+
+            <ImageButton
+                android:id="@+id/toolbt6"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_below="@id/toolbt5"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp" android:contentDescription="@string/toolname"
+                app:srcCompat="@android:color/holo_green_dark"
+                android:layout_toEndOf="@id/guideView2" />
+
+            <ImageButton
+                android:id="@+id/toolbt7"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_below="@id/toolbt6"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/toolname"
+                app:srcCompat="@android:color/holo_green_dark"
+                android:layout_toEndOf="@id/guideView2" />
+
+            <ImageButton
+                android:id="@+id/toolbt8"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_below="@id/toolbt7"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/toolname"
+                app:srcCompat="@android:color/holo_green_dark"
+                android:layout_toEndOf="@id/guideView2" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
