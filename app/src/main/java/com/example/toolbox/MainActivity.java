@@ -14,7 +14,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-    public void hi(){
-
+    public void tool_flash(View view)
+    {
+        Intent intent = new Intent(this, tool_flash.class);
+        startActivity(intent);
     }
 }

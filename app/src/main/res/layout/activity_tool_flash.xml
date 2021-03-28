@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".tool_flash">
+
+    <Button
+        android:id="@+id/idFlashOnoff"
+        android:layout_width="140dp"
+        android:layout_height="77dp"
+        android:background="@drawable/buttonbackground"
+        android:text="light"
+        android:textSize="30sp" />
+</RelativeLayout>

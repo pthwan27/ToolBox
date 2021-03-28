@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ToolBox</string>
-    <string name="title">title</string>
-    <string name="toolname">toolname</string>
-
+    <string name="title">toolbox</string>
+    <string name="tool1">flash</string>
+    <string name="tool2">Protractor</string>
+    <string name="tool3">stopwatch</string>
+    <string name="tool4">weather</string>
 </resources>

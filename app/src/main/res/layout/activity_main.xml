@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
         android:layout_centerHorizontal="false"
-        android:gravity="center"
         android:layout_marginBottom="10dp"
+        android:gravity="center"
         android:text="@string/title"
         android:textSize="30sp" />
 
@@ -45,9 +45,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/toolname"
-                app:srcCompat="@android:color/holo_green_dark"
                 android:layout_toStartOf="@id/guideView2"
+                android:contentDescription="@string/tool1"
+                android:onClick="tool_flash"
+                android:src="@drawable/flashlight"
+                android:background="@drawable/buttonbackground" android:scaleType="centerInside"
                 />
 
             <ImageButton
@@ -58,7 +60,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/toolname"
                 app:srcCompat="@android:color/holo_green_dark"
                 android:layout_toStartOf="@id/guideView2" />
 
@@ -70,7 +71,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/toolname"
                 app:srcCompat="@android:color/holo_green_dark"
                 android:layout_toStartOf="@id/guideView2" />
 
@@ -83,7 +83,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/toolname"
                 app:srcCompat="@android:color/holo_green_dark"
                 android:layout_toStartOf="@id/guideView2" />
 
@@ -104,7 +103,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/toolname"
                 app:srcCompat="@android:color/holo_green_dark"
                 android:layout_toEndOf="@id/guideView2" />
 
@@ -116,7 +114,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp" android:contentDescription="@string/toolname"
+                android:layout_marginEnd="10dp"
                 app:srcCompat="@android:color/holo_green_dark"
                 android:layout_toEndOf="@id/guideView2" />
 
@@ -128,7 +126,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/toolname"
                 app:srcCompat="@android:color/holo_green_dark"
                 android:layout_toEndOf="@id/guideView2" />
 
@@ -140,7 +137,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/toolname"
                 app:srcCompat="@android:color/holo_green_dark"
                 android:layout_toEndOf="@id/guideView2" />
 
