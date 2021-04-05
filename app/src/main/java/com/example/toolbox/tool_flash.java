@@ -3,7 +3,6 @@ package com.example.toolbox;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.PackageManager;
-import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
@@ -55,7 +54,6 @@ public class tool_flash extends AppCompatActivity {
             }
         });
     }
-
     void flashlight() {
         if (mCameraId == null) {
             try {
@@ -74,7 +72,6 @@ public class tool_flash extends AppCompatActivity {
                 return;
             }
         }
-
         mFlashOn = !mFlashOn;
         try {
             mCameraManager.setTorchMode(mCameraId, mFlashOn);

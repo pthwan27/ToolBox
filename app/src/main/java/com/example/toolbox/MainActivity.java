@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +17,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void tool_flash(View view)
     {
-        Intent intent = new Intent(this, tool_flash.class);
+        intent = new Intent(this, tool_flash.class);
+        startActivity(intent);
+    }
+    public void tool_calculate(View view){
+        intent = new Intent(this, tool_calculate.class);
         startActivity(intent);
     }
 }

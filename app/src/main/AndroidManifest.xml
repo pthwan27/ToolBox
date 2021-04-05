@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".tool_flash"></activity>
+        <activity android:name=".tool_calculate"></activity>
+        <activity android:name=".tool_flash" />
         <activity android:name=".startActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

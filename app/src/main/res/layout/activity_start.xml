@@ -30,7 +30,7 @@
         android:layout_below="@id/clickText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        app:srcCompat="@drawable/toolbox" />
+        app:srcCompat="@drawable/start_toolbox" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -43,7 +43,7 @@
         android:layout_marginBottom="0dp"
         android:layout_toLeftOf="@id/imageView3"
         android:rotation="-5"
-        app:srcCompat="@drawable/hammer" />
+        app:srcCompat="@drawable/start_hammer" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -53,7 +53,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toLeftOf="@id/centersapce"
         android:rotation="5"
-        app:srcCompat="@drawable/spanner" />
+        app:srcCompat="@drawable/start_spanner" />
 
     <Space
         android:id="@+id/centersapce"
@@ -71,7 +71,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/centersapce"
         android:rotation="-5"
-        app:srcCompat="@drawable/wrench" />
+        app:srcCompat="@drawable/start_wrench" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -81,6 +81,6 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/imageView4"
         android:rotation="5"
-        app:srcCompat="@drawable/flatscrewdriver" />
+        app:srcCompat="@drawable/start_flatscrewdriver" />
 
 </RelativeLayout>
