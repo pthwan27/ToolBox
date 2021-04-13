@@ -48,7 +48,8 @@
                 android:layout_toStartOf="@id/guideView2"
                 android:contentDescription="@string/tool1"
                 android:onClick="tool_flash"
-                android:src="@drawable/start_flashlight"
+                android:src="@drawable/main_flashlight"
+                android:background="@drawable/calc_border"
                 android:scaleType="centerInside"
                 />
 
@@ -61,7 +62,11 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
                 android:onClick="tool_calculate"
-                android:layout_toStartOf="@id/guideView2" />
+                android:layout_toStartOf="@id/guideView2"
+                android:src="@drawable/main_calculator"
+                android:background="@drawable/calc_border"
+                android:scaleType="centerCrop"
+                />
 
             <ImageButton
                 android:id="@+id/toolbt3"
@@ -71,6 +76,10 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
+                android:onClick="tool_camera2"
+                android:src="@drawable/main_protractor"
+                android:background="@drawable/calc_border"
+                android:scaleType="centerCrop"
                 android:layout_toStartOf="@id/guideView2" />
 
             <ImageButton
@@ -78,6 +87,7 @@
                 android:layout_width="160dp"
                 android:layout_height="160dp"
                 android:layout_below="@id/toolbt3"
+                android:onClick="tool_camera"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
