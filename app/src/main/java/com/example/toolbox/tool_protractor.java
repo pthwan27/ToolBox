@@ -27,7 +27,7 @@ import android.widget.Toast;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 
-public class tool_camera2 extends Activity implements SurfaceHolder.Callback {
+public class tool_protractor extends Activity implements SurfaceHolder.Callback {
 
     Camera camera;
     SurfaceView surfaceView;
@@ -43,7 +43,7 @@ public class tool_camera2 extends Activity implements SurfaceHolder.Callback {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_tool_camera2);
+        setContentView(R.layout.activity_tool_protractor);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         getWindow().setFormat(PixelFormat.UNKNOWN);
@@ -137,7 +137,7 @@ public class tool_camera2 extends Activity implements SurfaceHolder.Callback {
                 imageFileOS.write(arg0);
                 imageFileOS.flush();
                 imageFileOS.close();
-                Toast.makeText(tool_camera2.this,
+                Toast.makeText(tool_protractor.this,
                         "Image saved: " + uriTarget.toString(),
                         Toast.LENGTH_LONG).show();
             } catch (FileNotFoundException e) {

@@ -17,8 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".tool_camera2"></activity>
-        <activity android:name=".tool_camera" />
+        <activity android:name=".tool_memoSaveActivity" />
+        <activity android:name=".tool_memo" />
+        <activity android:name=".tool_protractor" />
         <activity android:name=".tool_calculate" />
         <activity android:name=".tool_flash" />
         <activity android:name=".startActivity">
@@ -29,16 +30,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.toolbox.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
     </application>
 
 </manifest>

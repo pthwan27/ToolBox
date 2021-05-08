@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(this, tool_calculate.class);
         startActivity(intent);
     }
-    public void tool_camera(View view){
-        intent = new Intent(this, tool_camera.class);
+    public void tool_protractor(View view){
+        intent = new Intent(this, tool_protractor.class);
         startActivity(intent);
     }
-    public void tool_camera2(View view){
-        intent = new Intent(this, tool_camera2.class);
+    public void tool_memo(View view){
+        intent = new Intent(this, tool_memo.class);
         startActivity(intent);
     }
 }
