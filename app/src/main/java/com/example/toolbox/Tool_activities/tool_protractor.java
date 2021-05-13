@@ -1,4 +1,4 @@
-package com.example.toolbox;
+package com.example.toolbox.Tool_activities;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,6 +26,9 @@ import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.toolbox.BackPressHandler;
+import com.example.toolbox.R;
+
 
 public class tool_protractor extends Activity implements SurfaceHolder.Callback {
 
@@ -37,6 +40,7 @@ public class tool_protractor extends Activity implements SurfaceHolder.Callback 
 
     Button takepicture;
 
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,8 +152,6 @@ public class tool_protractor extends Activity implements SurfaceHolder.Callback 
             camera.startPreview();
         }
     };
-
-
     //포커스
     AutoFocusCallback myAutoFocusCallback = new AutoFocusCallback() {
         @Override
@@ -157,4 +159,9 @@ public class tool_protractor extends Activity implements SurfaceHolder.Callback 
             takepicture.setEnabled(true);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 3000);
+    }
 }

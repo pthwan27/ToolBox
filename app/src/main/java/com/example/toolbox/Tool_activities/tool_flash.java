@@ -1,4 +1,4 @@
-package com.example.toolbox;
+package com.example.toolbox.Tool_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +17,9 @@ import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.toolbox.BackPressHandler;
+import com.example.toolbox.R;
+
 public class tool_flash extends AppCompatActivity {
 
     private Button mbtFlashOnOff;
@@ -24,6 +27,7 @@ public class tool_flash extends AppCompatActivity {
     private CameraManager mCameraManager;
     private String mCameraId;
 
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,5 +111,10 @@ public class tool_flash extends AppCompatActivity {
     public void onDestroy() {
         flashLightOff();
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 3000);
     }
 }

@@ -5,137 +5,137 @@
     android:id="@+id/relativelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:paddingTop="5dp"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/toolbox"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_toRightOf="@id/viewguide"
+        android:fontFamily="@font/ubuntu_bold"
+        android:gravity="left"
+        android:text=" ToolBox"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_40ssp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/guideView"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#80242424" />
+        android:id="@+id/viewguide"
+        android:layout_width="@dimen/_3sdp"
+        android:layout_height="@dimen/_34sdp"
+        android:layout_alignBottom="@id/toolbox"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@drawable/background_subtitle_indicator" />
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/relativelayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/guideView">
+        android:layout_below="@id/toolbox">
 
-        <RelativeLayout
-            android:id="@+id/relativelayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fillViewport="true">
+        <ImageButton
+            android:id="@+id/flashbt"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignBottom="@id/toolbt2"
+            android:layout_toLeftOf="@id/toolbt2"
+            android:background="@drawable/background_mainbutton"
+            android:contentDescription="@string/tool1"
+            android:onClick="tool_flash"
+            android:scaleType="centerInside"
+            android:src="@drawable/main_flashlight" />
 
-            <ImageButton
-                android:id="@+id/flashbt"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@id/guideView2"
-                android:background="@drawable/button_border"
-                android:contentDescription="@string/tool1"
-                android:onClick="tool_flash"
-                android:scaleType="centerInside"
-                android:src="@drawable/main_flashlight" />
+        <ImageButton
+            android:id="@+id/toolbt2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:background="@drawable/background_mainbutton"
+            android:onClick="tool_calculate"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_calculator" />
 
-            <ImageButton
-                android:id="@+id/toolbt2"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_below="@id/flashbt"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@id/guideView2"
-                android:background="@drawable/button_border"
-                android:onClick="tool_calculate"
-                android:scaleType="centerCrop"
-                android:src="@drawable/main_calculator" />
+        <ImageButton
+            android:id="@+id/toolbt3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignBottom="@id/toolbt2"
+            android:layout_toRightOf="@id/toolbt2"
+            android:background="@drawable/background_mainbutton"
+            android:onClick="tool_protractor"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_protractor" />
 
-            <ImageButton
-                android:id="@+id/toolbt3"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_below="@id/toolbt2"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@id/guideView2"
-                android:background="@drawable/button_border"
-                android:onClick="tool_protractor"
-                android:scaleType="centerCrop"
-                android:src="@drawable/main_protractor" />
+        <ImageButton
+            android:id="@+id/toolbt4"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignBottom="@id/toolbt5"
+            android:layout_toLeftOf="@id/toolbt5"
+            android:background="@drawable/background_mainbutton"
+            android:onClick="tool_memo"
 
-            <ImageButton
-                android:id="@+id/toolbt4"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_below="@id/toolbt3"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@id/guideView2"
-                android:background="@drawable/button_border"
-                android:onClick="tool_memo"
-                android:scaleType="centerCrop"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_note" />
 
-                android:src="@drawable/main_note" />
+        <ImageButton
+            android:id="@+id/toolbt5"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@id/toolbt2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:background="@drawable/background_mainbutton" />
 
-            <View
-                android:id="@+id/guideView2"
-                android:layout_width="2dp"
-                android:layout_height="740dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="#80242424" />
+        <ImageButton
+            android:id="@+id/toolbt6"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignBottom="@id/toolbt5"
+            android:layout_toRightOf="@id/toolbt5"
+            android:background="@drawable/background_mainbutton" />
 
-            <ImageButton
-                android:id="@+id/toolbt5"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@id/guideView2" />
+        <ImageButton
+            android:id="@+id/toolbt7"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignBottom="@id/toolbt8"
+            android:layout_marginStart="@dimen/_8ssp"
+            android:layout_toLeftOf="@id/toolbt8"
+            android:background="@drawable/background_mainbutton" />
 
-            <ImageButton
-                android:id="@+id/toolbt6"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_below="@id/toolbt5"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@id/guideView2" />
+        <ImageButton
+            android:id="@+id/toolbt8"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@id/toolbt5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:background="@drawable/background_mainbutton" />
 
-            <ImageButton
-                android:id="@+id/toolbt7"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_below="@id/toolbt6"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@id/guideView2" />
+        <ImageButton
+            android:id="@+id/toolbt9"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignBottom="@id/toolbt8"
+            android:layout_toRightOf="@id/toolbt8"
+            android:background="@drawable/background_mainbutton" />
 
-            <ImageButton
-                android:id="@+id/toolbt8"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_below="@id/toolbt7"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@id/guideView2" />
+    </RelativeLayout>
 
-        </RelativeLayout>
-    </ScrollView>
 
 </RelativeLayout>

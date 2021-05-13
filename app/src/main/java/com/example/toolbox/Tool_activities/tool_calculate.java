@@ -1,23 +1,35 @@
-package com.example.toolbox;
+package com.example.toolbox.Tool_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+
 import org.mariuszgromada.math.mxparser.*;
+
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.toolbox.BackPressHandler;
+import com.example.toolbox.R;
 
 public class tool_calculate extends AppCompatActivity {
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0,
             btPlus, btMinus, btMultiply, btDivide, btEqual, btC, btBracket, btPercent, btDot, btBs;
     TextView tv1, tv2;
-    boolean checking  = true;
+    boolean checking = true;
     String input;
+
+    // BackPressHandler 객체 선언, 할당
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tool_calculate);
+
 
         bt1 = findViewById(R.id.bt1);
         bt2 = findViewById(R.id.bt2);
@@ -126,11 +138,11 @@ public class tool_calculate extends AppCompatActivity {
         btBracket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checking){
+                if (checking) {
                     input = tv1.getText().toString();
                     tv1.setText(input + "(");
                     checking = false;
-                }else{
+                } else {
                     input = tv1.getText().toString();
                     tv1.setText(input + ")");
                     checking = true;
@@ -183,11 +195,10 @@ public class tool_calculate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 input = tv1.getText().toString();
-                if(input.length() > 0){
-                    input = input.substring(0,input.length()-1);
+                if (input.length() > 0) {
+                    input = input.substring(0, input.length() - 1);
                     tv1.setText(input);
-                }
-                else {
+                } else {
                     input = "";
                     tv1.setText(input);
                 }
@@ -207,5 +218,10 @@ public class tool_calculate extends AppCompatActivity {
                 tv2.setText(result);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 3000);
     }
 }
