@@ -12,4 +12,5 @@
     <string name="type_here">type here...</string>
     <string name="select_note_color">Select Note Color</string>
     <string name="pick_color">pick color!</string>
+    <string name="delete_note">Delete Note</string>
 </resources>

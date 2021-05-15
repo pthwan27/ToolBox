@@ -11,7 +11,7 @@
         android:id="@+id/idFlashOnoff"
         android:layout_width="140dp"
         android:layout_height="77dp"
-        android:background="@drawable/calculate_button"
+        android:background="@drawable/background_calculateselector"
         android:text="light"
         android:textSize="30sp" />
 

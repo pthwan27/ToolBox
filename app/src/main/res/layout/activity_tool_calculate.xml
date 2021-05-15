@@ -84,7 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="Backspace"
                         android:textSize="@dimen/_20ssp" />
@@ -100,7 +100,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="C"
                         android:textSize="@dimen/_20ssp" />
@@ -110,7 +110,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="()"
                         android:textSize="@dimen/_20ssp" />
@@ -120,7 +120,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="%"
                         android:textSize="@dimen/_20ssp" />
@@ -130,7 +130,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="÷"
                         android:textSize="@dimen/_20ssp" />
@@ -146,7 +146,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="7"
                         android:textSize="@dimen/_20ssp" />
@@ -156,7 +156,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="8"
                         android:textSize="@dimen/_20ssp" />
@@ -166,7 +166,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="9"
                         android:textSize="@dimen/_20ssp" />
@@ -176,7 +176,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="x"
                         android:textSize="@dimen/_20ssp" />
@@ -192,7 +192,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="4"
                         android:textSize="@dimen/_20ssp" />
@@ -202,7 +202,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="5"
                         android:textSize="@dimen/_20ssp" />
@@ -212,7 +212,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="6"
                         android:textSize="@dimen/_20ssp" />
@@ -222,7 +222,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="-"
                         android:textSize="@dimen/_20ssp" />
@@ -238,7 +238,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="1"
                         android:textSize="@dimen/_20ssp" />
@@ -248,7 +248,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="2"
                         android:textSize="@dimen/_20ssp" />
@@ -258,7 +258,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="3"
                         android:textSize="@dimen/_20ssp" />
@@ -268,7 +268,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="+"
                         android:textSize="@dimen/_20ssp" />
@@ -284,7 +284,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:textSize="@dimen/_20ssp"
                         android:visibility="invisible" />
@@ -294,7 +294,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="0"
                         android:textSize="@dimen/_20ssp" />
@@ -304,7 +304,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="."
                         android:textSize="@dimen/_20ssp" />
@@ -314,7 +314,7 @@
                         android:layout_width="1dp"
                         android:layout_height="70dp"
                         android:layout_weight="1"
-                        android:background="@drawable/calculate_button"
+                        android:background="@drawable/background_calculateselector"
                         android:fontFamily="@font/ubuntu_medium"
                         android:text="="
                         android:textSize="@dimen/_20ssp" />

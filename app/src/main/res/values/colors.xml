@@ -19,8 +19,10 @@
     <color name="colorNoteColor5">#000000</color>
     <color name="colorDelete">#FF4842</color>
     <color name="colorSearchBackground">#333333</color>
+    <color name="colorCalcButton">#A6333333</color>
     <color name="colortemp">#A3E1E1E1</color>
     <color name="temp2">#FFFD8C</color>
+
 
 
 </resources>
