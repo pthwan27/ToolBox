@@ -2,7 +2,6 @@ package com.example.toolbox.note_activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -15,15 +14,12 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -53,7 +49,6 @@ public class CreateNoteActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
 
-    private AlertDialog dialogDeleteNote;
     private Note alreadyAvailableNote;
 
     @Override
@@ -70,7 +65,6 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
-        //ADD NOTE
         inputNoteTitle = findViewById(R.id.inputNoteTitile);
         inputNoteSubtitle = findViewById(R.id.inputNoteSubtitle);
         inputNoteText = findViewById(R.id.inputNote);
@@ -95,13 +89,11 @@ public class CreateNoteActivity extends AppCompatActivity {
         selectedNoteColor = "#333333";
         selectedImagePath = "";
 
-        //getSerializableExtra이전에 putExtra()로 추가된 항목의 값, 나의 생각으론 클릭한 note
-        //viewOrupdate update노트를 골랐으면 true가 옴.
-        if (getIntent().getBooleanExtra("viewORupdate", false)) {
+        //viewOrupdate
+        if(getIntent().getBooleanExtra("viewORupdate", false)) {
             alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
             setviewORupdate();
         }
-
         findViewById(R.id.imageRemove).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,6 +106,18 @@ public class CreateNoteActivity extends AppCompatActivity {
 
         initVariousColor();
         setViewSubtitleIndicatorColor();
+    }
+    private void setviewORupdate(){
+        inputNoteTitle.setText(alreadyAvailableNote.getTitle());
+        inputNoteSubtitle.setText(alreadyAvailableNote.getSubtitle());
+        inputNoteText.setText(alreadyAvailableNote.getNoteText());
+        textDateTime.setText(alreadyAvailableNote.getDateTime());
+        if(alreadyAvailableNote.getImagePath() != null && !alreadyAvailableNote.getImagePath().trim().isEmpty()){
+            ImageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
+            ImageNote.setVisibility(View.VISIBLE);
+            findViewById(R.id.imageRemove).setVisibility(View.VISIBLE);
+            selectedImagePath = alreadyAvailableNote.getImagePath();
+        }
     }
 
     private void saveNote() {
@@ -134,8 +138,8 @@ public class CreateNoteActivity extends AppCompatActivity {
         note.setColor(selectedNoteColor);
         note.setImagePath(selectedImagePath);
 
-        //노트가 update되면(notedao) 새로 추가되는게 아니라 alreadyAvailableNote(수정한 note)의 id(primary key)로 entities가 replace
-        if (alreadyAvailableNote != null) {
+        //노트가 insert되면(notedao) 새로 추가되는게 아니라 alreadyAvailableNote(수정한 note)의 id(primary key)로 entities가 replace
+        if(alreadyAvailableNote != null){
             note.setId(alreadyAvailableNote.getId());
         }
 
@@ -158,63 +162,6 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         }
         new SaveNoteTask().execute();
-    }
-
-    //view or Update Note
-    private void setviewORupdate() {
-        inputNoteTitle.setText(alreadyAvailableNote.getTitle());
-        inputNoteSubtitle.setText(alreadyAvailableNote.getSubtitle());
-        inputNoteText.setText(alreadyAvailableNote.getNoteText());
-        textDateTime.setText(alreadyAvailableNote.getDateTime());
-        if (alreadyAvailableNote.getImagePath() != null && !alreadyAvailableNote.getImagePath().trim().isEmpty()) {
-            ImageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
-            ImageNote.setVisibility(View.VISIBLE);
-            findViewById(R.id.imageRemove).setVisibility(View.VISIBLE);
-            selectedImagePath = alreadyAvailableNote.getImagePath();
-        }
-    }
-
-    //Delete Dialog
-    private void showDeleteDialog(){
-        if(dialogDeleteNote == null){
-            AlertDialog.Builder builder = new AlertDialog.Builder(CreateNoteActivity.this);
-            View view = LayoutInflater.from(this).inflate(
-                    R.layout.layout_deletenote, (ViewGroup)findViewById(R.id.layoutDeleteNoteContainer)
-            );
-            builder.setView(view);
-            dialogDeleteNote = builder.create();
-            if(dialogDeleteNote.getWindow() != null){
-                dialogDeleteNote.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-            }view.findViewById(R.id.textDeleteNote).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    @SuppressLint("StaticFieldLeak")
-                    class DeleteNoteTasek extends AsyncTask<Void, Void, Void>{
-                        @Override
-                        protected Void doInBackground(Void... voids) {
-                            NotesDatabase.getDatabase(getApplicationContext()).noteDao().deleteNote(alreadyAvailableNote);
-                            return null;
-                        }
-                        @Override
-                        protected void onPostExecute(Void aVoid) {
-                            super.onPostExecute(aVoid);
-                            Intent intent = new Intent();
-                            intent.putExtra("isNoteDeleted", true);
-                            setResult(RESULT_OK, intent);
-                            finish();
-                        }
-                    }
-                    new DeleteNoteTasek().execute();
-                }
-            });
-            view.findViewById(R.id.textCancel).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialogDeleteNote.dismiss();
-                }
-            });
-        }
-        dialogDeleteNote.show();
     }
 
     //노트 컬러 + imageAdd 부분
@@ -301,23 +248,24 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
         //performClick() -> 클릭 이벤트를 강제로 발생시킨다
-        if (alreadyAvailableNote != null && alreadyAvailableNote.getColor() != null && !alreadyAvailableNote.getColor().trim().isEmpty()) {
-            switch (alreadyAvailableNote.getColor()) {
-                case "333333":
+        if(alreadyAvailableNote != null && alreadyAvailableNote.getColor() != null && !alreadyAvailableNote.getColor().trim().isEmpty()){
+            switch (alreadyAvailableNote.getColor()){
+                case "333333" :
                     layoutVarious.findViewById(R.id.viewColor1).performClick();
                     break;
-                case "#FDBE3B":
+                case "#FDBE3B" :
                     layoutVarious.findViewById(R.id.viewColor2).performClick();
                     break;
-                case "#FF4842":
+                case "#FF4842" :
                     layoutVarious.findViewById(R.id.viewColor3).performClick();
                     break;
-                case "#3A52FC":
+                case "#3A52FC" :
                     layoutVarious.findViewById(R.id.viewColor4).performClick();
                     break;
-                case "#000000":
+                case "#000000" :
                     layoutVarious.findViewById(R.id.viewColor5).performClick();
                     break;
+
             }
         }
 
@@ -339,18 +287,6 @@ public class CreateNoteActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //alreadyAvailableNote는 Update or View 일 때 null이 아니기 때문에 이 때만 delete가 보이도록한다.
-        if (alreadyAvailableNote != null) {
-            layoutVarious.findViewById(R.id.layoutDeleteNote).setVisibility(View.VISIBLE);
-            layoutVarious.findViewById(R.id.layoutDeleteNote).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    showDeleteDialog();
-                }
-            });
-        }
     }
 
     //선택된 노트 컬러로 같이 변경되도록
@@ -360,14 +296,7 @@ public class CreateNoteActivity extends AppCompatActivity {
     }
 
     //이미지 추가 부분
-    //layout_various 에서 이미지 추가 누르면 권한요청 -> selectImage()
-    private void selectImage() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE);
-        }
-    }
-
+    //various layout에서 이미지 추가 누르면 권한요청 -> selectImage()
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -379,7 +308,12 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         }
     }
-
+    private void selectImage() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE);
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -403,12 +337,13 @@ public class CreateNoteActivity extends AppCompatActivity {
         }
     }
 
-    private String getPathUri(Uri contentUri) {
+    private String getPathUri(Uri contentUri){
         String filepath;
-        Cursor cursor = getContentResolver().query(contentUri, null, null, null, null);
-        if (cursor == null) {
+        Cursor cursor = getContentResolver().query(contentUri, null, null, null,null);
+        if(cursor == null){
             filepath = contentUri.getPath();
-        } else {
+        }
+        else {
             cursor.moveToFirst();
             int index = cursor.getColumnIndex("_data");
             filepath = cursor.getString(index);
