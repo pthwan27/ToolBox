@@ -9,6 +9,7 @@ import android.view.View;
 import org.mariuszgromada.math.mxparser.*;
 
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,14 @@ public class tool_calculate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tool_calculate);
 
+        ImageView imageBack = findViewById(R.id.imageBack);
+        //뒤로가는 버튼
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         bt1 = findViewById(R.id.bt1);
         bt2 = findViewById(R.id.bt2);
@@ -218,10 +227,5 @@ public class tool_calculate extends AppCompatActivity {
                 tv2.setText(result);
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 3000);
     }
 }

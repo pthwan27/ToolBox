@@ -3,6 +3,8 @@ package com.example.toolbox.adapters;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,10 @@ import com.example.toolbox.entities.Note;
 import com.example.toolbox.listeners.NotesListener;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 //note, room db의 entities 값들을 가져와 item_container_note를 RecyclerView로 보여준다.
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder>{
@@ -26,11 +31,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     //노트 view or update 하기위해
     private NotesListener notesListener;
 
+    private Timer timer;
+    private List<Note> noteSource;
+
 
     public NotesAdapter(List<Note> notes, NotesListener notesListener)
     {
         this.notes = notes;
         this.notesListener = notesListener;
+        noteSource = notes;
     }
 
     @NonNull
@@ -97,6 +106,44 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             }else{
                 imageNote.setVisibility(View.GONE);
             }
+        }
+    }
+
+    public void searchNote(final String searchKeyword){
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //notes -> 최종적으로 보여줄 노트.
+                //noteSource == notes
+                if(searchKeyword.trim().isEmpty()){
+                    notes = noteSource;
+                }else {
+                    //note에 notesource를 넣어가면서 찾아봄.
+                    //똑같은 문자열 발견시 temp에 저장
+                    ArrayList<Note> temp = new ArrayList<>();
+                    for(Note note : noteSource){
+                        if(note.getTitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
+                        note.getSubtitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
+                        note.getNoteText().toLowerCase().contains(searchKeyword.toLowerCase())){
+                            temp.add(note);
+                        }
+                    }
+                    notes = temp;
+                }
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //RecyclerView adapter 갱신시켜준다.
+                        notifyDataSetChanged();
+                    }
+                });
+            }
+        }, 500);
+    }
+    public void cancelTimer(){
+        if (timer != null) {
+            timer.cancel();
         }
     }
 }

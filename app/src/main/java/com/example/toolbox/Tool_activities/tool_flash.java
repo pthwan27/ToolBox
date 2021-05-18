@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -27,11 +28,19 @@ public class tool_flash extends AppCompatActivity {
     private CameraManager mCameraManager;
     private String mCameraId;
 
-    private BackPressHandler backPressHandler = new BackPressHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tool_flash);
+        ImageView imageBack = findViewById(R.id.imageBack);
+        //뒤로가는 버튼
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
             Toast.makeText(getApplicationContext(), "device is not support", Toast.LENGTH_LONG).show();
             new Handler().postDelayed(new Runnable() {
@@ -42,10 +51,13 @@ public class tool_flash extends AppCompatActivity {
             }, 3000);
             return;
         }
+
         mCameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
         mbtFlashOnOff = findViewById(R.id.idFlashOnoff);
 
 
+        /*수정 할 것
+        * on, off 했을 때 boolean 값도 함께 변경되어야함, 추가로 종료시에도.*/
         mbtFlashOnOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,13 +120,4 @@ public class tool_flash extends AppCompatActivity {
         mbtFlashOnOff.setText("OFF");
     }
 
-    public void onDestroy() {
-        flashLightOff();
-        super.onDestroy();
-    }
-
-    @Override
-    public void onBackPressed() {
-        backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 3000);
-    }
 }
