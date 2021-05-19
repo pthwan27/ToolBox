@@ -58,7 +58,7 @@
             android:layout_marginStart="@dimen/_12sdp"
             android:background="@null"
             android:fontFamily="@font/ubuntu_regular"
-            android:hint="@string/search_notes"
+            android:hint="검색"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:includeFontPadding="false"
