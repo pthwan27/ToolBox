@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ToolBox</string>
+    <string name="title">toolbox</string>
+    <string name="tool1">flash</string>
+    <string name="tool2">Protractor</string>
+    <string name="tool4">weather</string>
+    <string name="my_notes">My Notes</string>
+    <string name="note_title">Note Title</string>
+    <string name="note_subtitle">Note Subtitle</string>
+    <string name="pick_color">pick color!</string>
+    <string name="delete">삭제</string>
+    <string name="confirm">확인</string>
+    <string name="deletedescription">정말 삭제하시겠습니까?</string>
+</resources>

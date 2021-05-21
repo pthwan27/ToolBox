@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D000000">
+
+    <Button
+        android:id="@+id/intentbt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00FFFFFF"
+        android:onClick="clickbt" />
+
+    <TextView
+        android:id="@+id/clickText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:clickable="false"
+        android:text="ToolBox"
+        android:textColor="#000000"
+        android:textSize="65dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="264dp"
+        android:layout_height="166dp"
+        android:layout_below="@id/clickText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        app:srcCompat="@drawable/start_toolbox" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="91dp"
+        android:layout_height="150dp"
+        android:layout_above="@id/centersapce"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentBottom="false"
+        android:layout_marginRight="-6dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toLeftOf="@id/imageView3"
+        android:rotation="-5"
+        app:srcCompat="@drawable/start_hammer" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="70dp"
+        android:layout_height="170dp"
+        android:layout_above="@id/centersapce"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@id/centersapce"
+        android:rotation="5"
+        app:srcCompat="@drawable/start_spanner" />
+
+    <Space
+        android:id="@+id/centersapce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/clickText"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="70dp"
+        android:layout_height="170dp"
+        android:layout_above="@id/centersapce"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/centersapce"
+        android:rotation="-5"
+        app:srcCompat="@drawable/start_wrench" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="70dp"
+        android:layout_height="170dp"
+        android:layout_above="@id/centersapce"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/imageView4"
+        android:rotation="5"
+        app:srcCompat="@drawable/start_flatscrewdriver" />
+
+</RelativeLayout>

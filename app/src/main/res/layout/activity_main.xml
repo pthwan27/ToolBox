@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    tools:context="com.example.tool.MainActivity">
+
+    <TextView
+        android:id="@+id/toolbox"
+        android:layout_width="wrap_content"
+        android:layout_height="132dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_toRightOf="@id/viewguide"
+        android:fontFamily="@font/ubuntu_medium"
+        android:gravity="bottom|left"
+        android:text=" ToolBox"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_55ssp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewguide"
+        android:layout_width="@dimen/_3sdp"
+        android:layout_height="@dimen/_38sdp"
+        android:layout_alignBottom="@id/toolbox"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@drawable/background_subtitle_indicator" />
+
+    <RelativeLayout
+        android:id="@+id/relativelayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbox">
+
+        <ImageButton
+            android:id="@+id/flashbt"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_alignBottom="@id/calcbt"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_toLeftOf="@id/viewguide2"
+            android:background="@drawable/background_mainbutton"
+            android:contentDescription="@string/tool1"
+            android:onClick="tool_flash"
+            android:scaleType="centerInside"
+            android:src="@drawable/main_flashlight" />
+
+        <ImageButton
+            android:id="@+id/calcbt"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_toRightOf="@id/viewguide2"
+            android:background="@drawable/background_mainbutton"
+            android:onClick="tool_calculate"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_calculator" />
+
+        <View
+            android:id="@+id/viewguide2"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:id="@+id/protractorbt"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_below="@id/flashbt"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_toLeftOf="@id/viewguide2"
+            android:background="@drawable/background_mainbutton"
+            android:onClick="tool_protractor"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_protractor" />
+
+        <ImageButton
+            android:id="@+id/memobt"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_below="@id/calcbt"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_toRightOf="@id/viewguide2"
+            android:background="@drawable/background_mainbutton"
+            android:onClick="tool_memo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_note" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
