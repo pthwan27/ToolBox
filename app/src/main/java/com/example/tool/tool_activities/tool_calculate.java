@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tool.BackPressHandler;
 import com.example.toolbox.R;
 
-//import org.mariuszgromada.math.mxparser.*;
+import org.mariuszgromada.math.mxparser.*;
 
 public class tool_calculate extends AppCompatActivity {
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0,
@@ -210,19 +210,19 @@ public class tool_calculate extends AppCompatActivity {
                 }
             }
         });
-//        btEqual.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                input = tv1.getText().toString();
-//
-//                input = input.replaceAll("÷", "/");
-//                input = input.replaceAll("x", "*");
-//                input = input.replaceAll("%", "/100");
-//
-//                Expression exp = new Expression(input);
-//                String result = String.valueOf(exp.calculate());
-//                tv2.setText(result);
-//            }
-//        });
+        btEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                input = tv1.getText().toString();
+
+                input = input.replaceAll("÷", "/");
+                input = input.replaceAll("x", "*");
+                input = input.replaceAll("%", "/100");
+
+                Expression exp = new Expression(input);
+                String result = String.valueOf(exp.calculate());
+                tv2.setText(result);
+            }
+        });
     }
 }
