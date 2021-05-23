@@ -133,11 +133,11 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     private void saveNote() {
         if (inputNoteTitle.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Note title can't be empty!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "제목과 내용을 입력하세요!", Toast.LENGTH_LONG).show();
             return;
         } else if (inputNoteSubtitle.getText().toString().trim().isEmpty() &&
                 inputNoteText.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Note title can't be empty!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "제목과 내용을 입력하세요!", Toast.LENGTH_LONG).show();
             return;
         }
         //note에 작성한 column에 대한 값 입력 + room db에 저장

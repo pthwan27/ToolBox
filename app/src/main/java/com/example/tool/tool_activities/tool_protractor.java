@@ -162,6 +162,6 @@ public class tool_protractor extends Activity implements SurfaceHolder.Callback 
 
     @Override
     public void onBackPressed() {
-        backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 3000);
+        backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 1000);
     }
 }

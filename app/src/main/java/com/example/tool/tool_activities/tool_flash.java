@@ -13,57 +13,54 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tool.BackPressHandler;
 import com.example.toolbox.R;
 
 
 public class tool_flash extends AppCompatActivity {
 
-    private Button mbtFlashOnOff;
-    private boolean mFlashOn;
+    private Button btFlashOnOff;
+    private boolean checkFlash;
     private CameraManager mCameraManager;
     private String mCameraId;
+
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tool_flash);
         ImageView imageBack = findViewById(R.id.imageBack);
-        //뒤로가는 버튼
+        //뒤로가는 이미지 버튼
         imageBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                flashlightonoff(false);
+                finish();
             }
         });
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
-            Toast.makeText(getApplicationContext(), "device is not support", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "지원하지 않는 기기입니다.", Toast.LENGTH_LONG).show();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     finish();
                 }
-            }, 3000);
+            }, 500);
             return;
         }
 
         mCameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
-        mbtFlashOnOff = findViewById(R.id.idFlashOnoff);
-
+        btFlashOnOff = findViewById(R.id.idFlashOnoff);
+        flashlight();
 
         /*수정 할 것
-        * on, off 했을 때 boolean 값도 함께 변경되어야함, 추가로 종료시에도.*/
-        mbtFlashOnOff.setOnClickListener(new View.OnClickListener() {
+         * on, off 했을 때 boolean 값도 함께 변경되어야함, 추가로 종료시에도.*/
+        btFlashOnOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flashlight();
-                if (mFlashOn == false) {
-                    flashLightOff();
-                    mbtFlashOnOff.setText("ON");
-                } else {
-                    flashLightOn();
-                    mbtFlashOnOff.setText("OFF");
-                }
+                flashlightonoff(checkFlash);
             }
         });
     }
@@ -86,33 +83,42 @@ public class tool_flash extends AppCompatActivity {
                 return;
             }
         }
-        mFlashOn = !mFlashOn;
         try {
-            mCameraManager.setTorchMode(mCameraId, mFlashOn);
+            mCameraManager.setTorchMode(mCameraId, false);
         } catch (
                 CameraAccessException e) {
             e.printStackTrace();
         }
+        btFlashOnOff.setText("LIGHT");
+        checkFlash = true;
     }
 
-    public void flashLightOn() {
-        try {
-            mCameraManager.setTorchMode(mCameraId, true);
-
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
+    public void flashlightonoff(boolean check) {
+        if (check) {
+            try {
+                mCameraManager.setTorchMode(mCameraId, check);
+            } catch (
+                    CameraAccessException e) {
+                e.printStackTrace();
+            }
+            btFlashOnOff.setText("OFF");
+            checkFlash = !check;
+        } else {
+            try {
+                mCameraManager.setTorchMode(mCameraId, check);
+            } catch (
+                    CameraAccessException e) {
+                e.printStackTrace();
+            }
+            btFlashOnOff.setText("ON");
+            checkFlash = !check;
         }
-        mbtFlashOnOff.setText("ON");
+
     }
 
-    public void flashLightOff() {
-        //stopFlicker(); //stopSOS();
-        try {
-            mCameraManager.setTorchMode(mCameraId, false);
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
-        }
-        mbtFlashOnOff.setText("OFF");
-    }
 
+    public void onBackPressed() {
+        backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 1000);
+        flashlightonoff(false);
+    }
 }

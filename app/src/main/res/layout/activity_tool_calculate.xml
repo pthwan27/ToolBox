@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark">
 
@@ -332,6 +331,17 @@
 
             </GridLayout>
         </RelativeLayout>//버튼
-    </RelativeLayout>//배경화면 지정해야해서 layout따로분리
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btChange"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:textSize="@dimen/_25ssp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:background="@drawable/background_changebutton"
+        android:layout_gravity="center"
+        android:text="바꾸기"
+        />
 
 </LinearLayout>

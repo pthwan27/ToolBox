@@ -11,7 +11,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.example.tool.tool_activities.tool_calculate;
+import com.example.tool.calculate_activities.tool_calculate;
 import com.example.tool.tool_activities.tool_flash;
 import com.example.tool.tool_activities.tool_protractor;
 import com.example.tool.note_activities.tool_memomain;

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -15,20 +16,25 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme"
-        tools:targetApi='q'>
-        <!--        statehidden -> Acitivty 실행 시 키보드가 자동으로 올라오지 않는다.-->
-        <activity android:name="com.example.tool.note_activities.CreateNoteActivity"
+        android:usesCleartextTraffic="true"
+
+        tools:targetApi="q">
+        <activity android:name="com.example.tool.calculate_activities.calc_changeactivity"></activity>
+        <!-- statehidden -> Acitivty 실행 시 키보드가 자동으로 올라오지 않는다. -->
+        <activity
+            android:name="com.example.tool.note_activities.CreateNoteActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name="com.example.tool.note_activities.tool_memomain"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait"/>
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.example.tool.note_activities.tool_memomain"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.example.tool.tool_activities.tool_protractor" />
-        <activity android:name="com.example.tool.tool_activities.tool_calculate" />
+        <activity android:name="com.example.tool.calculate_activities.tool_calculate" />
         <activity android:name="com.example.tool.tool_activities.tool_flash" />
         <activity android:name="com.example.tool.startActivity">
             <intent-filter>

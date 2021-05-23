@@ -1,10 +1,12 @@
-package com.example.tool.tool_activities;
+package com.example.tool.calculate_activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,9 +18,14 @@ import org.mariuszgromada.math.mxparser.*;
 public class tool_calculate extends AppCompatActivity {
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0,
             btPlus, btMinus, btMultiply, btDivide, btEqual, btC, btBracket, btPercent, btDot, btBs;
-    TextView tv1, tv2;
+    TextView tvInput, tvOutput;
+
     boolean checking = true;
     String input;
+    String output;
+
+    Button btChange;
+
 
     // BackPressHandler 객체 선언, 할당
     private BackPressHandler backPressHandler = new BackPressHandler(this);
@@ -61,96 +68,99 @@ public class tool_calculate extends AppCompatActivity {
         btDot = findViewById(R.id.btDot);
         btBs = findViewById(R.id.btBs);
 
-        tv1 = findViewById(R.id.tvInput);
-        tv2 = findViewById(R.id.tvOutput);
+        tvInput = findViewById(R.id.tvInput);
+        tvOutput = findViewById(R.id.tvOutput);
+
+        btChange = findViewById(R.id.btChange);
 
         bt0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "0");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "0");
             }
         });
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "1");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "1");
             }
         });
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "2");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "2");
             }
         });
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "3");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "3");
             }
         });
         bt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "4");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "4");
             }
         });
         bt5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "5");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "5");
             }
         });
         bt6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "6");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "6");
             }
         });
         bt7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "7");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "7");
             }
         });
         bt8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "8");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "8");
             }
         });
         bt9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "9");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "9");
             }
         });
         btC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv2.setText("");
-                tv1.setText("");
+                tvOutput.setText("");
+                tvInput.setText("");
+                output = "";
             }
         });
         btBracket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checking) {
-                    input = tv1.getText().toString();
-                    tv1.setText(input + "(");
+                    input = tvInput.getText().toString();
+                    tvInput.setText(input + "(");
                     checking = false;
                 } else {
-                    input = tv1.getText().toString();
-                    tv1.setText(input + ")");
+                    input = tvInput.getText().toString();
+                    tvInput.setText(input + ")");
                     checking = true;
                 }
             }
@@ -158,71 +168,84 @@ public class tool_calculate extends AppCompatActivity {
         btPercent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "%");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "%");
             }
         });
         btDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "÷");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "÷");
             }
         });
         btMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "x");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "x");
             }
         });
         btMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "-");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "-");
             }
         });
         btPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + "+");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + "+");
             }
         });
         btDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
-                tv1.setText(input + ".");
+                input = tvInput.getText().toString();
+                tvInput.setText(input + ".");
             }
         });
         btBs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
+                input = tvInput.getText().toString();
                 if (input.length() > 0) {
                     input = input.substring(0, input.length() - 1);
-                    tv1.setText(input);
+                    tvInput.setText(input);
                 } else {
                     input = "";
-                    tv1.setText(input);
+                    tvInput.setText(input);
                 }
             }
         });
         btEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = tv1.getText().toString();
+                input = tvInput.getText().toString();
 
                 input = input.replaceAll("÷", "/");
                 input = input.replaceAll("x", "*");
                 input = input.replaceAll("%", "/100");
 
                 Expression exp = new Expression(input);
-                String result = String.valueOf(exp.calculate());
-                tv2.setText(result);
+                output = String.valueOf(exp.calculate());
+                tvOutput.setText(output);
             }
         });
+
+        btChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (output != "NaN" && output.length() > 0) {
+                    Intent intent = new Intent(getApplicationContext(), calc_changeactivity.class);
+                    intent.putExtra("Result", output);
+                    startActivity(intent);
+                } else;
+            }
+        });
+
+
     }
 }
