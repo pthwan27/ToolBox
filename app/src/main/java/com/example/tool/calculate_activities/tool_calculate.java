@@ -15,6 +15,9 @@ import com.example.toolbox.R;
 
 import org.mariuszgromada.math.mxparser.*;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 public class tool_calculate extends AppCompatActivity {
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0,
             btPlus, btMinus, btMultiply, btDivide, btEqual, btC, btBracket, btPercent, btDot, btBs;
@@ -23,7 +26,7 @@ public class tool_calculate extends AppCompatActivity {
     boolean checking = true;
     String input;
     String output;
-
+    Double outputtoDouble;
     Button btChange;
 
 
@@ -230,7 +233,23 @@ public class tool_calculate extends AppCompatActivity {
                 input = input.replaceAll("%", "/100");
 
                 Expression exp = new Expression(input);
-                output = String.valueOf(exp.calculate());
+
+                if(String.valueOf(exp.calculate()) != "NaN") {
+                    //MathParser 라이브러리는 숫자가 커지면 E(지수)표현으로 나타냄.
+                    //BigDecimal 을 쓰면 그 부분 해결!
+                    BigDecimal bigDecimal = new BigDecimal(exp.calculate());
+
+                    //소수점일경우 3자리 까지만 표현하도록 하기위한 부분
+                    output = String.valueOf(bigDecimal);
+                    outputtoDouble = Double.parseDouble(output);
+
+                    DecimalFormat form = new DecimalFormat("#.###");
+
+                    output = form.format(outputtoDouble);
+                }
+                else {
+                    output = String.valueOf(exp.calculate());
+                }
                 tvOutput.setText(output);
             }
         });
@@ -242,7 +261,9 @@ public class tool_calculate extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), calc_changeactivity.class);
                     intent.putExtra("Result", output);
                     startActivity(intent);
-                } else;
+                } else{
+                    Toast.makeText(getApplicationContext(),"바꿀 값이 없습니다!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

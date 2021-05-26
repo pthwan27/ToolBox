@@ -3,6 +3,7 @@ package com.example.tool.note_activities;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -44,6 +45,7 @@ public class tool_memomain extends AppCompatActivity implements NotesListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tool_memomain);
 
+
         ImageView imageBack = findViewById(R.id.imageBack);
         //뒤로가는 버튼
         imageBack.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +78,14 @@ public class tool_memomain extends AppCompatActivity implements NotesListener {
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
 
         EditText inputSearch = findViewById(R.id.inputSearch);
+        inputSearch.setText(" ");
+        Handler mHandler = new Handler();
+        mHandler.postDelayed(new Runnable()  {
+            public void run() {
+                inputSearch.setText("");
+            }
+        }, 100); // 0.1초후
+
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

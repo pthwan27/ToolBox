@@ -1,23 +1,30 @@
 package com.example.tool.calculate_activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.toolbox.R;
 
+
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class calc_changeactivity extends AppCompatActivity {
 
@@ -26,9 +33,15 @@ public class calc_changeactivity extends AppCompatActivity {
     TextView tvTemp;
 
     private String URL = "http://fx.kebhana.com/FER1101M.web";
-    private String tempstr;
+    private String jsonstr;
 
-    float usd, jpy;
+    Object obj;
+    JSONObject jsonObject;
+
+    JSONArray jsonlistarr;
+    JSONObject Jsonlistobj;
+
+    Float usd, jpy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +66,9 @@ public class calc_changeactivity extends AppCompatActivity {
 
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
-
-
-
     }
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -72,7 +81,7 @@ public class calc_changeactivity extends AppCompatActivity {
                 Elements elements = doc.select("body");
 
                 for (Element element : elements) {
-                    tempstr += element.toString() + "\n";
+                    jsonstr += element.toString() + "\n";
                 }
 
             } catch (IOException e) {
@@ -81,13 +90,27 @@ public class calc_changeactivity extends AppCompatActivity {
             return null;
         }
 
+        //Json object객체{}, array배열[]
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            jsonstr = jsonstr.replaceAll(" ", "");
+            jsonstr = jsonstr.substring(jsonstr.indexOf("=") + 1, jsonstr.indexOf(",]}") + 3);
 
-            tempstr = tempstr.replaceAll(" ", "");
-            tempstr = tempstr.substring(tempstr.indexOf("[{"), tempstr.indexOf("},]}"));
-            tvTemp.setText(tempstr);
+            try {
+                JSONParser parser = new JSONParser();
+                obj = parser.parse(jsonstr);
+                jsonObject = (JSONObject) obj;
+                jsonstr = (String) jsonObject.get("날짜");
+                jsonlistarr = (JSONArray) jsonObject.get("리스트");
+
+
+
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            tvTemp.setText(jsonstr);
         }
     }
 }

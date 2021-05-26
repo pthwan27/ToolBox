@@ -56,7 +56,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     private AlertDialog dialogDeleteNote;
 
-    private Note alreadyAvailableNote;
+    private Note ChangeableNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +96,9 @@ public class CreateNoteActivity extends AppCompatActivity {
         selectedNoteColor = "#333333";
         selectedImagePath = "";
 
-        //viewOrupdate
+        //view or update
         if(getIntent().getBooleanExtra("viewORupdate", false)) {
-            alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
+            ChangeableNote = (Note) getIntent().getSerializableExtra("note");
             setviewORupdate();
         }
 
@@ -119,15 +119,15 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     //view or update, 이 때 imageremove가 표시되게
     private void setviewORupdate(){
-        inputNoteTitle.setText(alreadyAvailableNote.getTitle());
-        inputNoteSubtitle.setText(alreadyAvailableNote.getSubtitle());
-        inputNoteText.setText(alreadyAvailableNote.getNoteText());
-        textDateTime.setText(alreadyAvailableNote.getDateTime());
-        if(alreadyAvailableNote.getImagePath() != null && !alreadyAvailableNote.getImagePath().trim().isEmpty()){
-            ImageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
+        inputNoteTitle.setText(ChangeableNote.getTitle());
+        inputNoteSubtitle.setText(ChangeableNote.getSubtitle());
+        inputNoteText.setText(ChangeableNote.getNoteText());
+        textDateTime.setText(ChangeableNote.getDateTime());
+        if(ChangeableNote.getImagePath() != null && !ChangeableNote.getImagePath().trim().isEmpty()){
+            ImageNote.setImageBitmap(BitmapFactory.decodeFile(ChangeableNote.getImagePath()));
             ImageNote.setVisibility(View.VISIBLE);
             findViewById(R.id.imageRemove).setVisibility(View.VISIBLE);
-            selectedImagePath = alreadyAvailableNote.getImagePath();
+            selectedImagePath = ChangeableNote.getImagePath();
         }
     }
 
@@ -149,9 +149,9 @@ public class CreateNoteActivity extends AppCompatActivity {
         note.setColor(selectedNoteColor);
         note.setImagePath(selectedImagePath);
 
-        //노트가 insert되면(notedao) 새로 추가되는게 아니라 alreadyAvailableNote(수정한 note)의 id(primary key)로 entities가 replace
-        if(alreadyAvailableNote != null){
-            note.setId(alreadyAvailableNote.getId());
+        //노트가 insert되면(notedao) 새로 추가되는게 아니라 ChangeableNote(수정한 note)의 id(primary key)로 entities가 replace
+        if(ChangeableNote != null){
+            note.setId(ChangeableNote.getId());
         }
 
         // Room은 메인 스레드에서 데이터베이스 작업을 허용하지 않기 때문에
@@ -259,8 +259,8 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
         //performClick() -> 클릭 이벤트를 강제로 발생시킨다
-        if(alreadyAvailableNote != null && alreadyAvailableNote.getColor() != null && !alreadyAvailableNote.getColor().trim().isEmpty()){
-            switch (alreadyAvailableNote.getColor()){
+        if(ChangeableNote != null && ChangeableNote.getColor() != null && !ChangeableNote.getColor().trim().isEmpty()){
+            switch (ChangeableNote.getColor()){
                 case "333333" :
                     layoutVarious.findViewById(R.id.viewColor1).performClick();
                     break;
@@ -299,7 +299,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
-        if(alreadyAvailableNote != null){
+        if(ChangeableNote != null){
             layoutVarious.findViewById(R.id.layoutDeleteNote).setVisibility(View.VISIBLE);
             layoutVarious.findViewById(R.id.layoutDeleteNote).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -330,7 +330,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
                         @Override
                         protected Void doInBackground(Void... voids) {
-                            NotesDatabase.getDatabase(getApplicationContext()).noteDao().deleteNote(alreadyAvailableNote);
+                            NotesDatabase.getDatabase(getApplicationContext()).noteDao().deleteNote(ChangeableNote);
                             return null;
                         }
 
