@@ -257,7 +257,7 @@ public class tool_calculate extends AppCompatActivity {
         btChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (output != "NaN" && output.length() > 0) {
+                if (tvOutput.getText().toString() != "NaN" && tvOutput.getText().toString().length() > 0) {
                     Intent intent = new Intent(getApplicationContext(), calc_changeactivity.class);
                     intent.putExtra("Result", output);
                     startActivity(intent);

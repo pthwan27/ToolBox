@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listarray">
+        <item>선택..</item>
+        <item>미국 USD</item>
+        <item>일본 JPY(100엔)</item>
+        <item>유로 EUR</item>
+        <item>중국 CNY</item>
+        <item>홍콩 HKD</item>
+        <item>태국 THB</item>
+        <item>대만 TWD</item>
+    </string-array>
+    <string-array name="listarray2">
+
+    </string-array>
+</resources>
