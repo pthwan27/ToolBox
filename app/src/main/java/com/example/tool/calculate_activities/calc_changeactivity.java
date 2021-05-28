@@ -36,11 +36,12 @@ import java.util.Map;
 public class calc_changeactivity extends AppCompatActivity {
 
     String result;
-    Double resulttoDouble;
+    Double resulttoDouble; // intent로 받아온 걸 double형으로
+
 
     TextView tvResult;
-    TextView tvchangedResult;
-    TextView tvchangedResult2;
+    TextView tvchangedResult; // 환율 계산 결과표시
+    TextView tvchangedResult2; // 단위 계산 결과표시
 
     Spinner spinner;
 
@@ -48,15 +49,13 @@ public class calc_changeactivity extends AppCompatActivity {
     private String jsonstr;
     Object obj;
     JSONObject jsonObject;
-
     JSONArray jsonListarr;
 
-    String[] name = new String[49];
-    Double[] price = new Double[49];
+    String[] name = new String[49]; //ex) 미국 USD, 일본 JPY
+    Double[] price = new Double[49]; // 환율 가격 담은 배열
 
-    String[] listarr;
+    String[] namelistarr; // Spinner에 표현하기위한 것
 
-    double changedResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,14 +85,12 @@ public class calc_changeactivity extends AppCompatActivity {
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
 
-        listarr = getResources().getStringArray(R.array.listarray);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listarr);
+        namelistarr = getResources().getStringArray(R.array.listarray);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, namelistarr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setSelection(0);
         spinner.setPrompt("선택하세요");
-
-
     }
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
@@ -142,18 +139,25 @@ public class calc_changeactivity extends AppCompatActivity {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    double changedResult;
+                    BigDecimal bigDecimal;
+                    String temp;
+                    DecimalFormat form = new DecimalFormat("#.###");
+
                     if (position == 0) {
-                        Toast.makeText(getApplicationContext(),"나라를 선택하세요!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "나라를 선택하세요!", Toast.LENGTH_LONG).show();
                     } else {
                         tvchangedResult.setText("");
-                        changedResult = price[position - 1] * resulttoDouble;
-                        String temp = String.valueOf(changedResult);
-                        tvchangedResult.setText(name[position-1] + ":" + temp);
+                        if (name[position - 1].contains("100"))
+                            changedResult = resulttoDouble / price[position - 1] * 100;
+                        else changedResult = resulttoDouble / price[position - 1];
 
-
+                        bigDecimal = new BigDecimal(changedResult);
+                        changedResult = Double.parseDouble(String.valueOf(bigDecimal));
+                        temp = form.format(changedResult);
+                        tvchangedResult.setText(String.valueOf(temp) +" "+ name[position-1].substring(2, 5));
                     }
                 }
-
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
 

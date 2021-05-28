@@ -240,10 +240,8 @@ public class tool_calculate extends AppCompatActivity {
                     BigDecimal bigDecimal = new BigDecimal(exp.calculate());
 
                     //소수점일경우 3자리 까지만 표현하도록 하기위한 부분
-                    output = String.valueOf(bigDecimal);
-                    outputtoDouble = Double.parseDouble(output);
-
-                    DecimalFormat form = new DecimalFormat("#.###");
+                    outputtoDouble = Double.parseDouble(String.valueOf(bigDecimal));
+                    DecimalFormat form = new DecimalFormat("#.#####");
 
                     output = form.format(outputtoDouble);
                 }

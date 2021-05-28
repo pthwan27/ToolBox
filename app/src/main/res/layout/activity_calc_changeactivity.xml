@@ -52,33 +52,11 @@
 
     <View
         android:id="@+id/view4"
-        android:layout_width="@dimen/_3sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_9sdp"
-        android:background="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view3" />
-
-    <Spinner
-        android:id="@+id/changeSpinner2"
-        android:layout_width="@dimen/_130sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:background="@drawable/background_spinner"
-        android:popupBackground="@color/colorWhite"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view3" />
-
-    <View
-        android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_3sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@color/colorWhite"
-        app:layout_constraintTop_toBottomOf="@id/changeSpinner" />
+        app:layout_constraintTop_toBottomOf="@id/tvchangedResult" />
 
     <TextView
         android:id="@+id/tv1"
@@ -86,7 +64,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/ubuntu_regular"
         android:text="환율계산"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_18ssp"
@@ -111,18 +89,56 @@
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_7sdp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/ubuntu_regular"
         android:text="단위계산"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_18ssp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvchangedResult" />
+        app:layout_constraintTop_toBottomOf="@id/changeSpinner2" />
+
+    <Spinner
+        android:id="@+id/changeSpinner2"
+        android:layout_width="@dimen/_130sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/background_spinner"
+        android:popupBackground="@color/colorWhite"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view4" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="@dimen/_3sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view4" />
+
+    <Spinner
+        android:id="@+id/changeSpinner3"
+        android:layout_width="@dimen/_130sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/background_spinner"
+        android:popupBackground="@color/colorWhite"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view4"
+        tools:layout_editor_absoluteX="424dp" />
 
     <TextView
         android:id="@+id/tvchangedResult2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fontFamily="@font/ubuntu_regular"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_20ssp"
-        app:layout_constraintTop_toBottomOf="@id/tv2" />
+        app:layout_constraintTop_toBottomOf="@id/tv2"
+        tools:layout_editor_absoluteX="13dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
