@@ -1,5 +1,6 @@
-package com.example.tool.tool_activities;
+package com.example.tool.flash_activities;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
@@ -7,6 +8,8 @@ import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,12 +23,14 @@ import com.example.toolbox.R;
 public class tool_flash extends AppCompatActivity {
 
     private Button btFlashOnOff;
+    private Button btScreenOnOff;
     private boolean checkFlash;
     private CameraManager mCameraManager;
     private String mCameraId;
 
     private BackPressHandler backPressHandler = new BackPressHandler(this);
 
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +57,7 @@ public class tool_flash extends AppCompatActivity {
         }
 
         mCameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
-        btFlashOnOff = findViewById(R.id.idFlashOnoff);
+        btFlashOnOff = findViewById(R.id.btFlashOnoff);
         flashlight();
 
         /*수정 할 것
@@ -63,8 +68,19 @@ public class tool_flash extends AppCompatActivity {
                 flashlightonoff(checkFlash);
             }
         });
-    }
 
+        /*Screen 손전등*/
+
+        intent = new Intent(this, screenflash_activity.class);
+        btScreenOnOff = findViewById(R.id.btscreenonoff);
+        btScreenOnOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("Brightness", 255);
+                startActivity(intent);
+            }
+        });
+    }
     void flashlight() {
         if (mCameraId == null) {
             try {
@@ -115,7 +131,6 @@ public class tool_flash extends AppCompatActivity {
         }
 
     }
-
 
     public void onBackPressed() {
         backPressHandler.onBackPressed("뒤로가기 버튼 한번 더 누르면 종료", 1000);

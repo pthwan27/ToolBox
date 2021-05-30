@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -21,10 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-
         tools:targetApi="q">
-        <activity android:name="com.example.tool.calculate_activities.calc_changeactivity"></activity>
-        <!-- statehidden -> Acitivty 실행 시 키보드가 자동으로 올라오지 않는다. -->
+        <activity android:name="com.example.tool.flash_activities.screenflash_activity"></activity>
+        <activity android:name="com.example.tool.calculate_activities.calc_changeactivity" /> <!-- statehidden -> Acitivty 실행 시 키보드가 자동으로 올라오지 않는다. -->
         <activity
             android:name="com.example.tool.note_activities.CreateNoteActivity"
             android:screenOrientation="portrait"
@@ -35,7 +34,7 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.example.tool.tool_activities.tool_protractor" />
         <activity android:name="com.example.tool.calculate_activities.tool_calculate" />
-        <activity android:name="com.example.tool.tool_activities.tool_flash" />
+        <activity android:name="com.example.tool.flash_activities.tool_flash" />
         <activity android:name="com.example.tool.startActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

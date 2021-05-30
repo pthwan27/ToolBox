@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.example.tool.tool_activities.tool_flash">
+    tools:context="com.example.tool.flash_activities.tool_flash">
 
     <ImageView
         android:id="@+id/imageBack"
@@ -19,12 +19,36 @@
         app:tint="@color/colorIcons" />
 
     <Button
-        android:id="@+id/idFlashOnoff"
+        android:id="@+id/btFlashOnoff"
         android:layout_width="140dp"
         android:layout_height="77dp"
+        android:layout_alignBottom="@id/guideView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/background_calculateselector"
-        android:layout_centerInParent="true"
-        android:text="light"
-        android:textSize="30sp" />
+        android:fontFamily="@font/ubuntu_regular"
+        android:text="플래시"
+        android:textSize="@dimen/_28ssp" />
+
+    <View
+        android:id="@+id/guideView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/btscreenonoff"
+        android:layout_width="140dp"
+        android:layout_height="77dp"
+        android:layout_alignTop="@id/guideView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/background_calculateselector"
+        android:fontFamily="@font/ubuntu_regular"
+        android:text="화면"
+        android:textSize="@dimen/_28ssp" />
+
 
 </RelativeLayout>

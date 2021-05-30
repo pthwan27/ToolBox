@@ -22,12 +22,15 @@
         android:layout_width="@dimen/_195sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_marginRight="@dimen/_10sdp"
         android:fontFamily="@font/ubuntu_regular"
+        android:gravity="center"
         android:hint="result"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorGray"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_30ssp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,109 +39,166 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_3sdp"
         android:background="@color/colorWhite"
+        android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/tvResult" />
 
     <Spinner
         android:id="@+id/changeSpinner"
-        android:layout_width="@dimen/_130sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_width="@dimen/_110sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/ubuntu_regular"
+        android:textAlignment="center"
         android:background="@drawable/background_spinner"
         android:popupBackground="@color/colorWhite"
         android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view3" />
 
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_3sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:background="@color/colorWhite"
         app:layout_constraintTop_toBottomOf="@id/tvchangedResult" />
 
     <TextView
         android:id="@+id/tv1"
-        android:layout_width="@dimen/_100sdp"
+        android:layout_width="@dimen/_90sdp"
         android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:fontFamily="@font/ubuntu_regular"
-        android:text="환율계산"
+        android:gravity="center"
+        android:text="환율계산기"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/_18ssp"
+        android:textSize="@dimen/_17ssp"
+        app:layout_constraintBottom_toBottomOf="@id/changeSpinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/changeSpinner" />
+        app:layout_constraintEnd_toEndOf="@id/view5"/>
 
     <TextView
         android:id="@+id/tvchangedResult"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/_25ssp"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/background_strokegraybutton"
         android:fontFamily="@font/ubuntu_regular"
+        android:gravity="center"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv1" />
 
     <TextView
         android:id="@+id/tv2"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:fontFamily="@font/ubuntu_regular"
-        android:text="단위계산"
+        android:gravity="center"
+        android:text="단위계산기"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/_18ssp"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/changeSpinner2" />
+        app:layout_constraintTop_toBottomOf="@id/view4" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/background_strokegraybutton"
+        android:includeFontPadding="true"
+        android:inputType="textMultiLine|number"
+        android:maxEms="6"
+        android:minEms="2"
+        android:paddingStart="@dimen/_1sdp"
+        android:paddingEnd="@dimen/_1sdp"
+        android:scrollHorizontally="true"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_17ssp"
+        app:layout_constraintEnd_toEndOf="@id/changeSpinner2"
+        app:layout_constraintStart_toStartOf="@id/changeSpinner2"
+        app:layout_constraintTop_toBottomOf="@id/tv2" />
+
 
     <Spinner
         android:id="@+id/changeSpinner2"
         android:layout_width="@dimen/_130sdp"
         android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/background_spinner"
         android:popupBackground="@color/colorWhite"
         android:spinnerMode="dialog"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view4" />
+        app:layout_constraintTop_toBottomOf="@id/editTextNumber" />
 
-    <View
+    <TextView
         android:id="@+id/view5"
-        android:layout_width="@dimen/_3sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:background="@color/colorWhite"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_50ssp"
+        android:gravity="center"
+        android:text="="
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_30ssp"
+        app:layout_constraintEnd_toStartOf="@id/changeSpinner3"
+        app:layout_constraintStart_toEndOf="@id/changeSpinner2"
+        app:layout_constraintTop_toBottomOf="@id/editTextNumber" />
+
+    <EditText
+        android:id="@+id/editTextNumber2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view4" />
+        android:background="@drawable/background_strokegraybutton"
+        android:includeFontPadding="true"
+        android:inputType="textMultiLine|number"
+        android:maxEms="6"
+        android:minEms="2"
+        android:paddingStart="@dimen/_1sdp"
+        android:paddingEnd="@dimen/_1sdp"
+        android:scrollHorizontally="true"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_17ssp"
+        app:layout_constraintEnd_toEndOf="@id/changeSpinner3"
+        app:layout_constraintStart_toStartOf="@id/changeSpinner3"
+        app:layout_constraintTop_toBottomOf="@id/tv2" />
 
     <Spinner
         android:id="@+id/changeSpinner3"
         android:layout_width="@dimen/_130sdp"
         android:layout_height="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/background_spinner"
         android:popupBackground="@color/colorWhite"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view4"
+        app:layout_constraintTop_toBottomOf="@id/editTextNumber2"
         tools:layout_editor_absoluteX="424dp" />
 
-    <TextView
-        android:id="@+id/tvchangedResult2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <Button
+        android:id="@+id/changebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
         android:fontFamily="@font/ubuntu_regular"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/_20ssp"
-        app:layout_constraintTop_toBottomOf="@id/tv2"
-        tools:layout_editor_absoluteX="13dp" />
+        android:background="@drawable/background_calculateselector"
+        android:text="바꾸기"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/changeSpinner3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

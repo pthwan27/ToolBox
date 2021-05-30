@@ -41,7 +41,7 @@ public class calc_changeactivity extends AppCompatActivity {
 
     TextView tvResult;
     TextView tvchangedResult; // 환율 계산 결과표시
-    TextView tvchangedResult2; // 단위 계산 결과표시
+
 
     Spinner spinner;
 
@@ -56,7 +56,7 @@ public class calc_changeactivity extends AppCompatActivity {
 
     String[] namelistarr; // Spinner에 표현하기위한 것
 
-
+    int selectedposition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +78,6 @@ public class calc_changeactivity extends AppCompatActivity {
         resulttoDouble = Double.parseDouble(result);
 
         tvchangedResult = findViewById(R.id.tvchangedResult);
-        tvchangedResult2 = findViewById(R.id.tvchangedResult2);
 
         spinner = findViewById(R.id.changeSpinner);
 
@@ -145,8 +144,10 @@ public class calc_changeactivity extends AppCompatActivity {
                     DecimalFormat form = new DecimalFormat("#.###");
 
                     if (position == 0) {
+                        spinner.setSelection(selectedposition, false);
                         Toast.makeText(getApplicationContext(), "나라를 선택하세요!", Toast.LENGTH_LONG).show();
                     } else {
+                        selectedposition = position;
                         tvchangedResult.setText("");
                         if (name[position - 1].contains("100"))
                             changedResult = resulttoDouble / price[position - 1] * 100;
