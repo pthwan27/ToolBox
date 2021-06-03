@@ -38,8 +38,8 @@
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_3sdp"
-        android:background="@color/colorWhite"
         android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/colorWhite"
         app:layout_constraintTop_toBottomOf="@id/tvResult" />
 
     <Spinner
@@ -47,22 +47,24 @@
         android:layout_width="@dimen/_110sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:fontFamily="@font/ubuntu_regular"
-        android:textAlignment="center"
         android:background="@drawable/background_spinner"
+        android:fontFamily="@font/ubuntu_regular"
         android:popupBackground="@color/colorWhite"
         android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="@id/view5"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/view5"
         app:layout_constraintTop_toBottomOf="@id/view3" />
 
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_3sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="24dp"
         android:background="@color/colorWhite"
-        app:layout_constraintTop_toBottomOf="@id/tvchangedResult" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/tv1"
@@ -76,23 +78,25 @@
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_17ssp"
         app:layout_constraintBottom_toBottomOf="@id/changeSpinner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/view5"/>
+        app:layout_constraintEnd_toEndOf="@id/view5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvchangedResult"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_25ssp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_15sdp"
         android:background="@drawable/background_strokegraybutton"
         android:fontFamily="@font/ubuntu_regular"
         android:gravity="center"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_20ssp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="바꾼 값"
+        android:textColorHint="@color/colorGray"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv1" />
 
     <TextView
@@ -115,16 +119,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/background_strokegraybutton"
+        android:fontFamily="@font/ubuntu_regular"
+        android:hint="숫자 입력"
         android:includeFontPadding="true"
         android:inputType="textMultiLine|number"
         android:maxEms="6"
-        android:minEms="2"
+        android:minEms="5"
         android:paddingStart="@dimen/_1sdp"
         android:paddingEnd="@dimen/_1sdp"
         android:scrollHorizontally="true"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/_17ssp"
+        android:textColorHint="@color/colorGray"
+        android:textSize="@dimen/_15ssp"
         app:layout_constraintEnd_toEndOf="@id/changeSpinner2"
         app:layout_constraintStart_toStartOf="@id/changeSpinner2"
         app:layout_constraintTop_toBottomOf="@id/tv2" />
@@ -134,11 +141,13 @@
         android:id="@+id/changeSpinner2"
         android:layout_width="@dimen/_130sdp"
         android:layout_height="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/ubuntu_regular"
         android:background="@drawable/background_spinner"
         android:popupBackground="@color/colorWhite"
         android:spinnerMode="dialog"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextNumber" />
 
@@ -154,51 +163,47 @@
         app:layout_constraintStart_toEndOf="@id/changeSpinner2"
         app:layout_constraintTop_toBottomOf="@id/editTextNumber" />
 
-    <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:background="@drawable/background_strokegraybutton"
-        android:includeFontPadding="true"
-        android:inputType="textMultiLine|number"
-        android:maxEms="6"
-        android:minEms="2"
-        android:paddingStart="@dimen/_1sdp"
-        android:paddingEnd="@dimen/_1sdp"
-        android:scrollHorizontally="true"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/_17ssp"
-        app:layout_constraintEnd_toEndOf="@id/changeSpinner3"
-        app:layout_constraintStart_toStartOf="@id/changeSpinner3"
-        app:layout_constraintTop_toBottomOf="@id/tv2" />
-
     <Spinner
         android:id="@+id/changeSpinner3"
         android:layout_width="@dimen/_130sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:fontFamily="@font/ubuntu_regular"
         android:background="@drawable/background_spinner"
         android:popupBackground="@color/colorWhite"
         android:spinnerMode="dialog"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextNumber2"
+        app:layout_constraintTop_toBottomOf="@id/editTextNumber"
         tools:layout_editor_absoluteX="424dp" />
 
     <Button
-        android:id="@+id/changebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/changebt"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_5sdp"
-        android:fontFamily="@font/ubuntu_regular"
+        app:layout_constraintTop_toBottomOf="@id/changeSpinner3"
+        app:layout_constraintEnd_toEndOf="@id/changeSpinner3"
         android:background="@drawable/background_calculateselector"
         android:text="바꾸기"
         android:textSize="@dimen/_15ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/changeSpinner3" />
+        android:fontFamily="@font/ubuntu_regular"/>
 
+    <TextView
+        android:id="@+id/tvchangedResult2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/background_strokegraybutton"
+        android:fontFamily="@font/ubuntu_regular"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_20ssp"
+        android:hint="바꾼 값"
+        android:textColorHint="@color/colorGray"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/changebt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

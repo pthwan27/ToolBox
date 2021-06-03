@@ -11,6 +11,16 @@
         <item>대만 TWD</item>
     </string-array>
     <string-array name="listarray2">
-
+        <item>선택하세요</item>
+        <item>km</item>
+        <item>m</item>
+        <item>cm</item>
+        <item>mm</item>
+        <item>ųm</item>
+        <item>nm</item>
+        <item>mi</item>
+        <item>yd</item>
+        <item>ft</item>
+        <item>in</item>
     </string-array>
 </resources>

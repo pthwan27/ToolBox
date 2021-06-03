@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,13 +37,12 @@ import java.util.Map;
 
 public class calc_changeactivity extends AppCompatActivity {
 
+    /*환율 부분*/
     String result;
     Double resulttoDouble; // intent로 받아온 걸 double형으로
 
-
     TextView tvResult;
     TextView tvchangedResult; // 환율 계산 결과표시
-
 
     Spinner spinner;
 
@@ -54,13 +55,29 @@ public class calc_changeactivity extends AppCompatActivity {
     String[] name = new String[49]; //ex) 미국 USD, 일본 JPY
     Double[] price = new Double[49]; // 환율 가격 담은 배열
 
-    String[] namelistarr; // Spinner에 표현하기위한 것
+    String[] moneylistarr; // Spinner에 표현하기위한 것
 
     int selectedposition;
+
+    /*단위 부분*/
+    EditText etinputNum;
+    Double etinputDouble; // etinputNum -> Double
+    String[] lengthlistarr;
+
+    Spinner spinner2;
+    Spinner spinner3;
+
+    Button changeBt;
+    TextView tvchangedResult2;
+
+    int getsp2position;
+    int getsp3position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_changeactivity);
+
 
         ImageView imageBack = findViewById(R.id.imageBack);
         //뒤로가는 버튼
@@ -71,6 +88,7 @@ public class calc_changeactivity extends AppCompatActivity {
             }
         });
 
+        /*환율 부분*/
         tvResult = findViewById(R.id.tvResult);
         result = getIntent().getStringExtra("Result");
         tvResult.setText(result);
@@ -84,12 +102,47 @@ public class calc_changeactivity extends AppCompatActivity {
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
 
-        namelistarr = getResources().getStringArray(R.array.listarray);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, namelistarr);
+        moneylistarr = getResources().getStringArray(R.array.listarray);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, moneylistarr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setSelection(0);
         spinner.setPrompt("선택하세요");
+
+        /*단위 부분*/
+        etinputNum = findViewById(R.id.editTextNumber);
+        etinputNum.setText(result);
+
+        spinner2 = findViewById(R.id.changeSpinner2);
+        spinner3 = findViewById(R.id.changeSpinner3);
+
+        changeBt = findViewById(R.id.changebt);
+        tvchangedResult2 = findViewById(R.id.tvchangedResult2);
+
+        lengthlistarr = getResources().getStringArray(R.array.listarray2);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lengthlistarr);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner2.setAdapter(adapter1);
+        spinner3.setAdapter(adapter1);
+
+        spinner2.setSelection(0);
+        spinner3.setSelection(0);
+
+
+        changeBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getsp2position == 0 || getsp3position == 0) {
+                    Toast.makeText(getApplicationContext(), "두개 모두 선택해주세요!", Toast.LENGTH_LONG).show();
+                } else {
+                    etinputDouble = Double.parseDouble(etinputNum.getText().toString());
+                    tvchangedResult2.setText("결과");
+
+                    changelength(etinputDouble, lengthlistarr[getsp2position], lengthlistarr[getsp3position]);
+                }
+            }
+        });
     }
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
@@ -156,14 +209,132 @@ public class calc_changeactivity extends AppCompatActivity {
                         bigDecimal = new BigDecimal(changedResult);
                         changedResult = Double.parseDouble(String.valueOf(bigDecimal));
                         temp = form.format(changedResult);
-                        tvchangedResult.setText(String.valueOf(temp) +" "+ name[position-1].substring(2, 5));
+                        tvchangedResult.setText(String.valueOf(temp) + " " + name[position - 1].substring(2, 5));
                     }
                 }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    getsp2position = position;
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    getsp3position = position;
+                }
+
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
 
                 }
             });
         }
+
+    }
+
+    private void changelength(double x, String A, String B) {
+        x = resulttoDouble;
+        String result;
+        x = otherTocm(x, A);
+        tvchangedResult2.setText(cmToother(x, B));
+    }
+    private double otherTocm(double x, String A){
+        if(A != "cm"){
+            switch (A){
+                case "km" :
+                    x *= 100000;
+                    break;
+                case "m" :
+                    x *= 100;
+                    break;
+                case "cm":
+                    break;
+                case "mm" :
+                    x /= 10;
+                    break;
+                case "ųm" :
+                    x /= 10000;
+                    break;
+                case "nm":
+                    x /= 1e+7;
+                    break;
+                case "mi":
+                    x *= 160934;
+                    break;
+                case"yd":
+                    x *= 91.44;
+                    break;
+                case"ft":
+                    x *= 30.48;
+                    break;
+                default:
+                    x *= 2.54;
+                    break;
+            }
+        }
+        return x;
+    }
+    private String cmToother(double x, String B){
+        String temp;
+        switch (B){
+            case "km" :
+                temp = "km";
+                x /= 100000;
+                break;
+            case "m" :
+                temp="m";
+                x /= 100;
+                break;
+            case "cm":
+                temp="cm";
+                break;
+            case "mm" :
+                temp="mm";
+                x *= 10;
+                break;
+            case "ųm" :
+                temp="ųm";
+                x *= 10000;
+                break;
+            case "nm":
+                temp="nm";
+                x *= 1e+7;
+                break;
+            case "mi":
+                temp="mi";
+                x /= 160934;
+                break;
+            case"yd":
+                temp="yd";
+                x /= 91.44;
+                break;
+            case"ft":
+                temp="ft";
+                x /= 30.48;
+                break;
+            default:
+                temp="in";
+                x /= 2.54;
+                break;
+        }
+        BigDecimal bigDecimal = new BigDecimal(x);
+        x = Double.parseDouble(String.valueOf(bigDecimal));
+        DecimalFormat form = new DecimalFormat("#.########");
+
+        return form.format(x)+temp;
     }
 }
