@@ -30,7 +30,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 
-public class tool_protractor extends Activity implements SurfaceHolder.Callback {
+public class    tool_protractor extends Activity implements SurfaceHolder.Callback {
 
     Camera camera;
     SurfaceView surfaceView;
